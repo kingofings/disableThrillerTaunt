@@ -49,18 +49,13 @@ void OnConVarChange(ConVar convar, const char[] before, const char[] after)
 
 	if (convar.BoolValue)
 	{
-		if (!g_Patch.Validate())
-		{
-			ThrowError("Failed to validate static  patch CTFPlayer::ModifyOrAppendCriteria()::DisableThrillerTaunt");
-		}
-
+		if (!g_Patch.Validate())SetFailState("Failed to validate static  patch CTFPlayer::ModifyOrAppendCriteria()::DisableThrillerTaunt");
 		if (g_Patch.Enable())
 		{
 			LogMessage("Enabled static Patch CTFPlayer::ModifyOrAppendCriteria()::DisableThrillerTaunt");
 			return;
 		}
 
-		ThrowError("Failed to enable static Patch CTFPlayer::ModifyOrAppendCriteria()::DisableThrillerTaunt");
-		return;
+		SetFailState("Failed to enable static Patch CTFPlayer::ModifyOrAppendCriteria()::DisableThrillerTaunt");
 	}
 }
