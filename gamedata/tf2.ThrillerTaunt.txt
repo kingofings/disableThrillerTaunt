@@ -1,0 +1,28 @@
+"Games"
+{
+    "tf"
+    {
+        "Signatures"
+        {
+            "CTFPlayer::ModifyOrAppendCriteria()"
+            {
+                "library"   "server"
+                "linux"     "@_ZN9CTFPlayer22ModifyOrAppendCriteriaER14AI_CriteriaSet"
+            }
+        }
+
+        "MemPatches"
+        {
+            "CTFPlayer::ModifyOrAppendCriteria()::DisableThrillerTaunt"
+			{
+				"signature" "CTFPlayer::ModifyOrAppendCriteria()"
+				"linux"
+				{
+					"offset"	"151Bh"
+					"verify"	"\x77"
+					"patch"		"\x70"
+				}
+			}
+        }
+    }
+}
